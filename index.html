@@ -8,6 +8,17 @@
     <script src="java.js" defer></script>
 </head>
 <body>
-    <p>Some text here</p>
+    <button onclick="startGame()">Start Game</button>
+    <div class="boxes">
+        <div class="spots" id="pos00" onclick="makeMove(pos00)">0</div>
+        <div class="spots" id="pos10" onclick="makeMove(pos10)">1</div>
+        <div class="spots" id="pos20" onclick="makeMove(pos20)">2</div>
+        <div class="spots" id="pos01" onclick="makeMove(pos01)">3</div>
+        <div class="spots" id="pos11" onclick="makeMove(pos11)">4</div>
+        <div class="spots" id="pos21" onclick="makeMove(pos21)">5</div>
+        <div class="spots" id="pos02" onclick="makeMove(pos02)">6</div>
+        <div class="spots" id="pos12" onclick="makeMove(pos12)">7</div>
+        <div class="spots" id="pos22" onclick="makeMove(pos22)">8</div>
+    </div>
 </body>
 </html>
