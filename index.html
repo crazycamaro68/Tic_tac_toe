@@ -8,17 +8,19 @@
     <script src="java.js" defer></script>
 </head>
 <body>
-    <button onclick="startGame()">Start Game</button>
+    <button onclick="testty.startGame()">Start Game</button>
+    <button onclick="testty.reset()">Reset Board</button>
+    <p id="currentPlayer"></p>
     <div class="boxes">
-        <div class="spots" id="pos00" onclick="makeMove(pos00)">0</div>
-        <div class="spots" id="pos10" onclick="makeMove(pos10)">1</div>
-        <div class="spots" id="pos20" onclick="makeMove(pos20)">2</div>
-        <div class="spots" id="pos01" onclick="makeMove(pos01)">3</div>
-        <div class="spots" id="pos11" onclick="makeMove(pos11)">4</div>
-        <div class="spots" id="pos21" onclick="makeMove(pos21)">5</div>
-        <div class="spots" id="pos02" onclick="makeMove(pos02)">6</div>
-        <div class="spots" id="pos12" onclick="makeMove(pos12)">7</div>
-        <div class="spots" id="pos22" onclick="makeMove(pos22)">8</div>
+        <div class="spots" id="pos00" onclick="game().makeMove(pos00)"></div>
+        <div class="spots" id="pos10" onclick="game().makeMove(pos10)"></div>
+        <div class="spots" id="pos20" onclick="game().makeMove(pos20)"></div>
+        <div class="spots" id="pos01" onclick="game().makeMove(pos01)"></div>
+        <div class="spots" id="pos11" onclick="game().makeMove(pos11)"></div>
+        <div class="spots" id="pos21" onclick="game().makeMove(pos21)"></div>
+        <div class="spots" id="pos02" onclick="game().makeMove(pos02)"></div>
+        <div class="spots" id="pos12" onclick="game().makeMove(pos12)"></div>
+        <div class="spots" id="pos22" onclick="game().makeMove(pos22)"></div>
     </div>
 </body>
 </html>
