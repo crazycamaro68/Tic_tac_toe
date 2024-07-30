@@ -10,74 +10,73 @@ function createPlayer(name, icon, current){
             case "pos00":
                 if(currentGame.tiles[0] === ""){
                 currentGame.tiles.splice(0,1,PlayerIcon);
-                return currentGame.tiles;
+                return currentGame.tiles, true;
                 }else{
-                    console.log("Pick Again!");
+                    return false
                 }
             break;
             case "pos10":
                 if(currentGame.tiles[1] ===""){
                 currentGame.tiles.splice(1,1,PlayerIcon);
-
-                return currentGame.tiles;
+                return currentGame.tiles, true;
                 }else{
-                    console.log("Pick Again!");
+                    return false
                 }
             break;
             case "pos20":
                 if(currentGame.tiles[2] ===""){
                 currentGame.tiles.splice(2,1,PlayerIcon);
-                return currentGame.tiles;
+                return currentGame.tiles, true;
                 }else{
-                    console.log("Pick Again!");
+                    return false
                 }
             break;
             case "pos01":
                 if(currentGame.tiles[3] ===""){
                 currentGame.tiles.splice(3,1,PlayerIcon);
-                return currentGame.tiles;
+                return currentGame.tiles, true;
                 }else{
-                    console.log("Pick Again!");
+                    return false
                 }
             break;
             case "pos11":
                 if(currentGame.tiles[4] ===""){
                 currentGame.tiles.splice(4,1,PlayerIcon);
-                return currentGame.tiles;
+                return currentGame.tiles, true;
                 }else{
-                    console.log("Pick Again!");
+                    return false
                 }
             break;
             case "pos21":
                 if(currentGame.tiles[5] ===""){
                 currentGame.tiles.splice(5,1,PlayerIcon);
-                return currentGame.tiles;
+                return currentGame.tiles, true;
                 }else{
-                    console.log("Pick Again!");
+                    return false
                 }
             break;
             case "pos02":
                 if(currentGame.tiles[6] ===""){
                 currentGame.tiles.splice(6,1,PlayerIcon);
-                return currentGame.tiles;
+                return currentGame.tiles, true;
                 }else{
-                    console.log("Pick Again!");
+                    return false
                 }
             break;
             case "pos12":
                 if(currentGame.tiles[7] ===""){
                 currentGame.tiles.splice(7,1,PlayerIcon);
-                return currentGame.tiles;
+                return currentGame.tiles, true;
                 }else{
-                    console.log("Pick Again!");
+                    return false
                 }
             break;
             case "pos22":
                 if(currentGame.tiles[8] ===""){
                 currentGame.tiles.splice(8,1,PlayerIcon);
-                return currentGame.tiles;
+                return currentGame.tiles, true;
                 }else{
-                    console.log("Pick Again!");
+                    return false
                 }
             break;
         }
@@ -116,19 +115,27 @@ function game(){
         //This function passes in the element from the html document and this sets the postion to the id of that element witch it uses in the makeMove function
         //that is used in the player object
         let postion = id.id;
-    
+        let currentMove
         if(player1.currentPlayer == true){
-            player1.makeMove(postion);
-            currentPlayerText.textContent = (`It's ${player2.PlayerName}s turn`)
-            player1.currentPlayer = false;
-            player2.currentPlayer = true;
+            currentMove = player1.makeMove(postion);
+            if(currentMove == true){
+                currentPlayerText.textContent = (`It's ${player2.PlayerName}s turn`)
+                player1.currentPlayer = false;
+                player2.currentPlayer = true;
+            }else if(currentMove == false){
+                currentPlayerText.textContent = ('Spot taken, Try again');
+            }
             checkForWinner(player1.PlayerName, player1.PlayerIcon);
             render();
         }else if(player2.currentPlayer == true){
-            player2.makeMove(postion);
+            currentMove = player2.makeMove(postion);
+            if(currentMove == true){
             currentPlayerText.textContent = (`It's ${player1.PlayerName}s turn`)
             player1.currentPlayer = true;
             player2.currentPlayer = false;
+            }else if(currentMove == false){
+                currentPlayerText.textContent = ('Spot taken, Try again');
+            }
             checkForWinner(player2.PlayerName ,player2.PlayerIcon);
             render();
         }
@@ -177,6 +184,10 @@ function game(){
     }
     //Resets the board array, re-enables buttons on board, and renders updated board.
     function reset(){
+        for(i = 0;i < spots.length; i++){ 
+            postions.push(spots[i].getAttribute("onclick"));
+            spots[i].toggleAttribute("onclick");
+        }
         for(i = 0;i < spots.length; i++){
             spots[i].setAttribute("onclick", postions[i]);
         }
